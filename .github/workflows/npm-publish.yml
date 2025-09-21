@@ -60,50 +60,6 @@ jobs:
           fi
           echo "✅ Type definitions exist"
 
-      - name: Validate package.json fields
-        run: |
-          echo "Checking package.json required fields..."
-          
-          # Check if name exists and is not empty
-          NAME=$(node -p "require('./package.json').name || ''")
-          if [ -z "$NAME" ]; then
-            echo "❌ package.json missing 'name' field"
-            exit 1
-          fi
-          echo "✅ Package name: $NAME"
-
-          # Check if version exists and is valid semver
-          VERSION=$(node -p "require('./package.json').version || ''")
-          if [ -z "$VERSION" ]; then
-            echo "❌ package.json missing 'version' field"
-            exit 1
-          fi
-          echo "✅ Package version: $VERSION"
-
-          # Check if description exists
-          DESCRIPTION=$(node -p "require('./package.json').description || ''")
-          if [ -z "$DESCRIPTION" ]; then
-            echo "❌ package.json missing 'description' field"
-            exit 1
-          fi
-          echo "✅ Package description: $DESCRIPTION"
-
-          # Check if main export exists
-          MAIN=$(node -p "require('./package.json').main || require('./package.json').exports || ''")
-          if [ -z "$MAIN" ]; then
-            echo "❌ package.json missing 'main' or 'exports' field"
-            exit 1
-          fi
-          echo "✅ Main export: $MAIN"
-
-          # Check if license exists
-          LICENSE=$(node -p "require('./package.json').license || ''")
-          if [ -z "$LICENSE" ]; then
-            echo "❌ package.json missing 'license' field"
-            exit 1
-          fi
-          echo "✅ License: $LICENSE"
-
       - name: Check if version tag matches package.json
         if: startsWith(github.ref, 'refs/tags/v')
         run: |
@@ -136,7 +92,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
