@@ -11,6 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       should-publish: ${{ steps.checks.outputs.should-publish }}
+    
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,7 +33,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
@@ -35,6 +50,8 @@ jobs:
 
       - name: Run tests
         run: npm run test
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
 
       - name: Check if dist folder exists
         run: |
