@@ -29,8 +29,16 @@
     "skip locked",
     "worker"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "bmz1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmz1/skiplane.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bmz1/skiplane/issues"
+  },
+  "homepage": "https://github.com/bmz1/skiplane#readme",
   "dependencies": {
     "pg": "^8.16.3"
   },
