@@ -80,7 +80,7 @@ await queue.enqueue(payload, {
 });
 ```
 
-Jobs scheduled in the future stay hidden until `available_at` is reached.
+Jobs scheduled in the future stay hidden until `runAt` is reached.
 
 ### Worker control
 
@@ -186,4 +186,4 @@ Pull requests are welcome. Please:
 
 ## License
 
-ISC © 2024-present. See `LICENSE` (add one if distributing publicly).
+MIT © 2024-present. See `LICENSE`.
