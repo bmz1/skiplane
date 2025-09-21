@@ -14,8 +14,9 @@
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "lint": "biome lint .",
-    "fmt": "biome format .",
+    "lint": "npx @biomejs/biome lint .",
+    "fmt": "npx @biomejs/biome format .",
+    "fmt:write": "npx @biomejs/biome format . --write",
     "test": "vitest --run",
     "test:coverage": "vitest run --coverage",
     "dev": "vitest --watch",

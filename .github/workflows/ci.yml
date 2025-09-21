@@ -45,7 +45,7 @@ jobs:
         run: npm run lint
 
       - name: Run formatting check
-        run: npm run fmt -- --check
+        run: npm run fmt
 
       - name: Build project
         run: npm run build
