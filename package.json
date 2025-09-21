@@ -1,6 +1,6 @@
 {
   "name": "skiplane",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight PostgreSQL-backed job queue for Node.js using SKIP LOCKED.",
   "type": "module",
   "exports": "./dist/index.js",
@@ -10,12 +10,13 @@
     "dist"
   ],
   "engines": {
-    "node": ">=18.17"
+    "node": ">=22.12"
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "lint": "biome lint .",
-    "fmt": "biome format .",
+    "lint": "npx @biomejs/biome lint .",
+    "fmt": "npx @biomejs/biome format .",
+    "fmt:write": "npx @biomejs/biome format . --write",
     "test": "vitest --run",
     "test:coverage": "vitest run --coverage",
     "dev": "vitest --watch",
@@ -29,14 +30,22 @@
     "skip locked",
     "worker"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "bmz1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmz1/skiplane.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bmz1/skiplane/issues"
+  },
+  "homepage": "https://github.com/bmz1/skiplane#readme",
   "dependencies": {
     "pg": "^8.16.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.19.17",
     "@types/pg": "^8.15.5",
     "@vitest/coverage-v8": "^3.2.4",
     "tsx": "^4.16.2",
